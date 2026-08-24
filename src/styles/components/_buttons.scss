@@ -1,0 +1,24 @@
+@use "../abstract/variables" as abs;
+
+.btn {
+  transition: all 0.3s ease-in-out;
+
+  &__yellow {
+    background-color: abs.$yellow;
+    color: abs.$dark;
+    &--home {
+      padding: 20px;
+      margin: 24px;
+      font-size: 40px;
+
+      &:hover .controller {
+        width: 49.5px;
+        height: 36px;
+        transform: rotate(25.77deg);
+      }
+      &:hover .arrow {
+        content: url("../assets/img/Arrow 1 (1).svg");
+      }
+    }
+  }
+}

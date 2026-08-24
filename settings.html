@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Settings</title>
+</head>
+<body class="settings">
+
+    <h1 class="settings__text settings__text--headline" id="heading">Settings</h1>
+    
+    <div class="settings__content">
+    <section class="settings__options">
+
+        <fieldset class="settings__group">
+            <legend class="settings__group-header">
+            <img src="./assets/img/palette.svg" alt="theme icon" class="settings__icon">
+            Game themes
+            </legend>
+            <label class="settings__group-text" for="theme-light">
+                <input type="radio" id="theme-light" name="theme" value="light" checked>
+                Code vibes theme
+            </label>
+            <label class="settings__group-text" for="theme-dark">
+                <input type="radio" id="theme-dark" name="theme" value="dark">
+                Gaming theme
+            </label>
+        </fieldset>
+
+        <fieldset class="settings__group">
+            <legend class="settings__group-header">
+            <img src="./assets/img/chess_pawn.svg" alt="player icon" class="settings__icon">
+            Choose Player
+            </legend>
+            <label class="settings__group-text" for="player-orange">
+                <input type="radio" id="player-orange" name="player" value="orange" checked>
+                Orange
+            </label>
+            <label class="settings__group-text" for="player-blue">
+                <input type="radio" id="player-blue" name="player" value="blue">
+                Blue
+            </label>
+        </fieldset>
+
+        <fieldset class="settings__group">
+            <legend class="settings__group-header">
+            <img src="./assets/img/style.svg" alt="difficulty icon" class="settings__icon">
+            Board Size
+            </legend>
+            <label class="settings__group-text" for="difficulty-easy">
+                <input type="radio" id="difficulty-easy" name="difficulty" value="easy" checked>
+                16 Cards
+            </label>
+            <label class="settings__group-text" for="difficulty-medium">
+                <input type="radio" id="difficulty-medium" name="difficulty" value="medium">
+                24 Cards
+            </label>
+            <label class="settings__group-text" for="difficulty-hard">
+                <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
+                36 Cards
+            </label>
+        </fieldset>
+
+    </section>
+
+    <section class="settings__preview">
+        <div class="settings__preview-img"></div>
+        <div class="settings__preview-buttons">
+        <button id="save-btn" class="btn btn__primary btn__primary--settings">Save Settings</button>
+    </div>
+    </section>
+
+</div>
+    
+    <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

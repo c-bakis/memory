@@ -1,0 +1,41 @@
+@use '../abstract/variables' as abs;
+@use '../abstract/mixin' as mix;
+@use '../abstract/functions' as fn;
+
+.home {
+    @include mix.flex-center;
+    background-color: abs.$dark;
+
+    &__text {
+        color: abs.$white;
+        margin-bottom: 50px;
+
+        &--headline {
+            font-weight: 700;
+            font-size: fn.px-to-rem(140px);
+        }
+
+        &--caption {
+            font-weight: 400;
+            font-size: fn.px-to-rem(48px);
+        }
+    }
+    &__controller {
+        position: absolute;
+        bottom: 10px;
+        left: -20px;
+        width: 400px;
+        height: 400px;
+    }
+}
+
+.controller {
+    width: 44px;
+    height: 23px;
+    transform:rotate(0deg);
+}
+.arrow {
+    width: 33px;
+    height: 24px;
+    content: url('../assets/img/Arrow 1.svg');
+}

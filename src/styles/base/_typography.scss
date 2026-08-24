@@ -1,0 +1,44 @@
+
+@use '../abstract/functions' as fn;
+
+@font-face {
+    font-family: 'red-rose';
+    src: url(../../../assets/font/Red_Rose/static/RedRose-Regular.ttf) format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'red-rose';
+    src: url(../../../assets/font/Red_Rose/static/RedRose-Bold.ttf) format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'orbitron';
+    src: url(../../../assets/font/orbitron/Orbitron-Regular.ttf) format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'orbitron';
+    src: url(../../../assets/font/orbitron/Orbitron-Bold.ttf) format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url(../../../assets/font/Almarai-Regular.ttf) format('truetype');
+    font-weight: normal;
+}
+
+h1, h2, h3, button, a, legend {
+    font-family: 'red-rose', sans-serif;
+    font-size: fn.px-to-rem(40px);
+    font-weight: bold;
+}
+
+p, span, li, option, textarea, label, input {
+    font-family: 'Almarai', sans-serif;
+    font-size: fn.px-to-rem(16px);
+    font-weight: normal;
+}
