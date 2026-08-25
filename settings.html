@@ -1,77 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Settings</title>
-</head>
-<body class="settings">
+  </head>
+  <body class="settings">
+    <h1 class="settings__text settings__text--headline" id="heading">
+      Settings
+    </h1>
 
-    <h1 class="settings__text settings__text--headline" id="heading">Settings</h1>
-    
     <div class="settings__content">
-    <section class="settings__options">
-
+      <section class="settings__options">
         <fieldset class="settings__group">
-            <legend class="settings__group-header">
-            <img src="./assets/img/palette.svg" alt="theme icon" class="settings__icon">
+          <legend class="settings__group-header">
+            <img
+              src="./assets/img/palette.svg"
+              alt="theme icon"
+              class="settings__icon"
+            />
             Game themes
-            </legend>
-            <label class="settings__group-text" for="theme-light">
-                <input type="radio" id="theme-light" name="theme" value="light" checked>
-                Code vibes theme
-            </label>
-            <label class="settings__group-text" for="theme-dark">
-                <input type="radio" id="theme-dark" name="theme" value="dark">
-                Gaming theme
-            </label>
+          </legend>
+          <label class="settings__group-text" for="code-vibes">
+            <input
+              type="radio"
+              id="code-vibes"
+              name="theme"
+              value="code-vibes"
+              checked
+            />
+            Code vibes theme
+          </label>
+          <label class="settings__group-text" for="gaming">
+            <input type="radio" id="gaming" name="theme" value="gaming" />
+            Gaming theme
+          </label>
         </fieldset>
 
         <fieldset class="settings__group">
-            <legend class="settings__group-header">
-            <img src="./assets/img/chess_pawn.svg" alt="player icon" class="settings__icon">
+          <legend class="settings__group-header">
+            <img
+              src="./assets/img/chess_pawn.svg"
+              alt="player icon"
+              class="settings__icon"
+            />
             Choose Player
-            </legend>
-            <label class="settings__group-text" for="player-orange">
-                <input type="radio" id="player-orange" name="player" value="orange" checked>
-                Orange
-            </label>
-            <label class="settings__group-text" for="player-blue">
-                <input type="radio" id="player-blue" name="player" value="blue">
-                Blue
-            </label>
+          </legend>
+          <label class="settings__group-text" for="player-orange">
+            <input
+              type="radio"
+              id="player-orange"
+              name="player"
+              value="orange"
+              checked
+            />
+            Orange
+          </label>
+          <label class="settings__group-text" for="player-blue">
+            <input type="radio" id="player-blue" name="player" value="blue" />
+            Blue
+          </label>
         </fieldset>
 
         <fieldset class="settings__group">
-            <legend class="settings__group-header">
-            <img src="./assets/img/style.svg" alt="difficulty icon" class="settings__icon">
+          <legend class="settings__group-header">
+            <img
+              src="./assets/img/style.svg"
+              alt="difficulty icon"
+              class="settings__icon"
+            />
             Board Size
-            </legend>
-            <label class="settings__group-text" for="difficulty-easy">
-                <input type="radio" id="difficulty-easy" name="difficulty" value="easy" checked>
-                16 Cards
-            </label>
-            <label class="settings__group-text" for="difficulty-medium">
-                <input type="radio" id="difficulty-medium" name="difficulty" value="medium">
-                24 Cards
-            </label>
-            <label class="settings__group-text" for="difficulty-hard">
-                <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
-                36 Cards
-            </label>
+          </legend>
+          <label class="settings__group-text" for="board-size-16">
+            <input
+              type="radio"
+              id="board-size-16"
+              name="board-size"
+              value="16"
+              checked
+            />
+            16 Cards
+          </label>
+          <label class="settings__group-text" for="board-size-24">
+            <input
+              type="radio"
+              id="board-size-24"
+              name="board-size"
+              value="24"
+            />
+            24 Cards
+          </label>
+          <label class="settings__group-text" for="board-size-36">
+            <input
+              type="radio"
+              id="board-size-36"
+              name="board-size"
+              value="36"
+            />
+            36 Cards
+          </label>
         </fieldset>
+      </section>
 
-    </section>
-
-    <section class="settings__preview">
-        <div class="settings__preview-img"></div>
+      <section class="settings__preview">
+        <div class="settings__preview-img">
+          <img
+            src="./assets/img/code-theme/theme.svg"
+            alt="theme preview"
+            class="settings__preview-img--theme"
+          />
+        </div>
         <div class="settings__preview-buttons">
-        <button id="save-btn" class="btn btn__primary btn__primary--settings">Save Settings</button>
+          <output
+            id="selected-theme"
+            class="settings__selected"
+            aria-live="polite"
+          >
+            Code vibes
+          </output>
+          
+          <output
+            id="selected-player"
+            class="settings__selected"
+            aria-live="polite"
+          >
+            Orange
+          </output>
+          <output
+            id="selected-board-size"
+            class="settings__selected"
+            aria-live="polite"
+          >
+            16 Cards
+          </output>
+          <button id="save-btn" class="btn btn__yellow btn__yellow--settings">
+            <img src="./assets/img/smart_display.svg" alt="start icon" class="btn__icon settings__preview-buttons-icon-display" />
+            Start
+          </button>
+        </div>
+      </section>
     </div>
-    </section>
 
-</div>
-    
     <script type="module" src="./src/main.ts"></script>
-</body>
+  </body>
 </html>

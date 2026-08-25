@@ -4,7 +4,7 @@
 
 .settings {
   margin: 0 auto;
-  padding: 100px;
+  padding: 100px 150px;
   &__text--headline {
     position: relative;
     border-bottom: 3px solid abs.$yellow;
@@ -28,12 +28,12 @@
     width: 200px;
   }
   &__content {
-    @include mix.flex-center(row, space-between, center);
-    margin-top: 100px;
+    @include mix.flex-center(row, space-between, flex-start);
+    margin-top: 50px;
   }
   &__options {
     @include mix.flex-center(column, flex-start, flex-start);
-    width: 50%;
+    width: 40%;
     padding: 20px;
     gap: 54px;
     text-align: left;
@@ -103,12 +103,48 @@
 
       &:checked {
         border-width: 2px;
-            background: radial-gradient(
-        circle,
-        abs.$dark 0 2px,
-        transparent 3px
-    );
+        background: radial-gradient(circle, abs.$dark 0 2px, transparent 3px);
       }
     }
+  }
+  &__preview {
+    @include mix.flex-center(column, center, flex-end);
+    gap: 42px;
+    width: 50%;
+
+    &-buttons,
+    &-img {
+      gap: 0;
+    }
+    &-buttons {
+      @include mix.flex-center(row, space-between, center);
+      background-color: abs.$secondary-white;
+    padding: 14px 20px;
+    width: 100%;
+    
+    &-icon-display {
+      height: 16px;
+      width: 20px;
+      margin-right: 4px;
+      vertical-align: -5%;
+    }
+    }
+  }
+  &__selected {
+    position: relative;
+    font-size: fn.px-to-rem(20px);
+      &:not(:first-of-type)::before {
+       content: "";
+        position: absolute;
+        left: -40%;
+        top: 50%;
+        width: 8px;
+        height: 48px;
+        background-color: abs.$yellow;
+        transform: translateY(-50%) rotate(19deg);
+      }
+      &:last-of-type {
+        margin-right: -24px;
+      }
   }
 }
