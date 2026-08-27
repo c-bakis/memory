@@ -2,5 +2,6 @@
 @use './base/main' as base;
 @use './layout/main' as lay;
 @use './pages/main' as pag;
+@use './layout/mediaqueries' as media;
 @use './components/main' as comp;
 

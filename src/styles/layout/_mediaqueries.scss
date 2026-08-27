@@ -1,0 +1,78 @@
+@use "../abstract/functions" as fn;
+
+@media (max-width: 1024px) {
+	.settings {
+		padding: 64px;
+
+		&__content {
+			gap: 32px;
+		}
+
+		&__options {
+			width: 40%;
+			padding: 12px;
+			gap: 40px;
+		}
+
+		&__preview {
+			width: 62%;
+
+			&-img--theme {
+				width: 360px;
+				height: auto;
+			}
+
+			&-buttons {
+				gap: 16px;
+				padding: 12px;
+			}
+		}
+
+		&__selected {
+			font-size: fn.px-to-rem(16px);
+
+			& + &::before {
+				left: -8px;
+				width: 4px;
+				height: 40px;
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.settings {
+		padding: 32px 24px;
+
+		&__content {
+			flex-direction: column;
+			align-items: center;
+			gap: 48px;
+		}
+
+		&__options,
+		&__preview {
+			width: 100%;
+		}
+
+		&__options {
+			padding: 0;
+			gap: 40px;
+		}
+
+		&__preview {
+			align-items: center;
+
+			&-buttons {
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 12px;
+				padding: 12px;
+			}
+		}
+	}
+}
