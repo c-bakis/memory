@@ -6,6 +6,44 @@
     <title>Document</title>
 </head>
 <body class="game" data-page="game">
+    <header class="game-header">
+        <section class="game-header__counter">
+            <div class="game-header__counter--blue">
+                <dl>
+                    <dt>Blue</dt>
+                    <dd>
+                        <output id="blue-score" aria-live="polite">
+                            0
+                        </output>
+                    </dd>
+                </dl>
+            </div>
+            <div class="game-header__counter--orange">
+                <dl>
+                    <dt>Orange</dt>
+                    <dd>
+                        <output id="orange-score" aria-live="polite">
+                            0
+                        </output>
+                    </dd>
+                </dl>
+            </div>
+        </section>
+        <section class="game-header__current-player-section">
+        <div class="game-header__current-player">
+            <h2>Current Player:</h2>
+            <span class="game-header__current-player-icon" role="img" aria-label="Current Player"></span>
+        </div>
+        </section>
+        <button class="game-header__exit">
+            <img src="./assets/img/move_item.svg" alt="" class="game-header__exit-icon">
+            Exit game        </button>
+    </header>
+
+    <main class="game-main">
+        <div class="game-card-back"></div>
+    </main>
     
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

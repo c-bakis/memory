@@ -1,0 +1,46 @@
+@use "../abstract/mixin" as mix;
+@use "../abstract/functions" as fn;
+
+.game {
+  padding: 50px;
+
+  .game-header {
+    @include mix.flex-center(row, space-between, center);
+    padding: fn.px-to-rem(16px) fn.px-to-rem(30px);
+
+    &__counter {
+      @include mix.flex-center(row, space-between, center);
+
+      & dl {
+        @include mix.flex-center(row, space-between, center);
+        padding: fn.px-to-rem(12px);
+      }
+
+      & dt {
+        @include mix.flex-center(row, center, center);
+        gap: fn.px-to-rem(8px);
+
+        &::before {
+          content: "";
+          background-color: currentColor;
+        }
+      }
+    }
+
+    &__current-player {
+      @include mix.flex-center(row, center, center);
+
+      h2 {
+        font-size: fn.px-to-rem(20px);
+      }
+    }
+
+    &__exit {
+      @include mix.flex-center(row, center, center);
+      gap: fn.px-to-rem(12px);
+      padding: fn.px-to-rem(8px) fn.px-to-rem(20px);
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+  }
+}

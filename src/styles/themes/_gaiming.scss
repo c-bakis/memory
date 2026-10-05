@@ -1,0 +1,96 @@
+@use "../abstract/variables" as abs;
+@use "../abstract/mixin" as mix;
+@use "../abstract/functions" as fn;
+
+[data-theme="gaming"].game {
+  background-color: abs.$dark-blue;
+  color: abs.$white;
+
+  .game-header {
+    background-color: abs.$pink-header;
+    border-radius: fn.px-to-rem(20px);
+
+    &__counter {
+      background-color: abs.$white;
+      border-radius: fn.px-to-rem(12px);
+
+      & dt {
+        font-size: 0;
+
+        &::before {
+          width: fn.px-to-rem(24px);
+          height: fn.px-to-rem(24px);
+          @include mix.icon-mask("/assets/img/chess_pawn.svg");
+        }
+      }
+
+      & output {
+        font-weight: bold;
+        font-size: fn.px-to-rem(20px);
+      }
+
+      &--blue {
+        color: abs.$blue;
+      }
+
+      &--orange {
+        color: abs.$orange;
+      }
+    }
+
+    &__current-player {
+      gap: fn.px-to-rem(8px);
+    }
+
+    &__current-player-icon {
+      @include mix.flex-center(row, center, center);
+      width: fn.px-to-rem(32px);
+      height: fn.px-to-rem(32px);
+      border-radius: fn.px-to-rem(9px);
+      background-color: abs.$orange;
+
+      &::after {
+        content: "";
+        width: 95%;
+        height: 95%;
+        background-color: abs.$white;
+        @include mix.icon-mask("/assets/img/chess_pawn.svg");
+      }
+    }
+
+    &__exit {
+      background-color: rgba(abs.$pink, 0.05);
+      border: 1px solid abs.$pink-border;
+      border-radius: fn.px-to-rem(12px);
+      color: abs.$white;
+      font-size: fn.px-to-rem(16px);
+      font-weight: bold;
+
+      &::before {
+        content: "";
+        width: fn.px-to-rem(16px);
+        height: fn.px-to-rem(16px);
+        background-color: abs.$white;
+        @include mix.icon-mask("/assets/img/move_item.svg");
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      &:hover {
+        background-color: rgba(abs.$pink, 0.15);
+        box-shadow: inset 0 0 0 1px abs.$pink-border;
+
+        &::before {
+          background-color: abs.$pink-border;
+        }
+      }
+    }
+
+    &__exit-icon {
+      display: none;
+    }
+  }
+
+  &[data-player="blue"] .game-header__current-player-icon {
+    background-color: abs.$blue;
+  }
+}

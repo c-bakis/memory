@@ -1,0 +1,70 @@
+@use "../abstract/variables" as abs;
+@use "../abstract/mixin" as mix;
+@use "../abstract/functions" as fn;
+
+[data-theme="code-vibes"].game {
+  background-color: abs.$dark;
+  color: abs.$white;
+
+  .game-header {
+    background-color: abs.$mint-header;
+
+    &__counter {
+      background-color: abs.$mint-opacity;
+
+      & dl {
+        gap: fn.px-to-rem(8px);
+      }
+
+      & dt::before {
+        width: fn.px-to-rem(20px);
+        height: fn.px-to-rem(16px);
+        @include mix.icon-mask("/assets/img/player-arrow.svg");
+      }
+
+      &--blue {
+        color: abs.$code-blue;
+      }
+
+      &--orange {
+        color: abs.$code-orange;
+      }
+    }
+
+    &__current-player {
+      gap: fn.px-to-rem(12px);
+
+      h2 {
+        font-weight: 400;
+      }
+    }
+
+    &__current-player-icon {
+      width: fn.px-to-rem(20px);
+      height: fn.px-to-rem(16px);
+      background-color: abs.$code-orange;
+      @include mix.icon-mask("/assets/img/player-arrow.svg");
+    }
+
+    &__exit {
+      background-color: abs.$mint-opacity;
+      border: 1px solid abs.$mint;
+      color: abs.$white;
+      font-size: fn.px-to-rem(20px);
+
+      &:hover {
+        background-color: abs.$mint-button;
+        color: abs.$dark;
+      }
+    }
+
+    &__exit-icon {
+      width: fn.px-to-rem(26px);
+      height: auto;
+    }
+  }
+
+  &[data-player="blue"] .game-header__current-player-icon {
+    background-color: abs.$code-blue;
+  }
+}

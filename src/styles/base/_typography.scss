@@ -27,7 +27,7 @@
 
 @font-face {
     font-family: 'Almarai';
-    src: url(../../../assets/font/Almarai-Regular.ttf) format('truetype');
+    src: url(../../../assets/font/Almarai/Almarai-Regular.ttf) format('truetype');
     font-weight: normal;
 }
 
@@ -41,4 +41,29 @@ p, span, li, option, textarea, label, input, output {
     font-family: 'Almarai', sans-serif;
     font-size: fn.px-to-rem(16px);
     font-weight: normal;
+}
+
+[data-theme="code-vibes"].game {
+  dl,
+  dt,
+  dd,
+  h2,
+  button,
+  a,
+  legend,
+  output {
+    font-family: 'red-rose', sans-serif;
+  }
+}
+[data-theme="gaming"].game {
+  dl,
+  dt,
+  dd,
+  h2,
+  button,
+  a,
+  legend,
+  output {
+    font-family: "orbitron", sans-serif;
+  }
 }

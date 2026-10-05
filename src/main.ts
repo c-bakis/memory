@@ -17,3 +17,12 @@ if (page === "settings") {
 // if (page === "result") {
 //   initResultPage();
 // }
+
+const settings = JSON.parse(
+  sessionStorage.getItem("game-settings") ?? "{}",
+);
+
+if (page === "game") {
+  document.body.dataset.theme = settings.theme ?? "code-vibes";
+  document.body.dataset.player = settings.player ?? "orange";
+}

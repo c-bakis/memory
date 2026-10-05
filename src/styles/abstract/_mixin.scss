@@ -5,6 +5,10 @@
   align-items: $align;
 }
 
+@mixin icon-mask($url) {
+  mask: url($url) no-repeat center / contain;
+}
+
 @mixin fade-in($time: 0.3s, $ease: ease-in-out) {
   animation: fadeIn $time $ease forwards;
 }
