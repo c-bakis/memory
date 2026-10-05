@@ -37,12 +37,28 @@
         </section>
         <button class="game-header__exit">
             <img src="./assets/img/move_item.svg" alt="" class="game-header__exit-icon">
-            Exit game        </button>
+            Exit game
+        </button>
     </header>
 
     <main class="game-main">
-        <div class="game-card-back"></div>
+        <div class="game-board">
+            <button type="button" class="game-card" aria-label="Card">
+                <span class="game-card__inner">
+                    <span class="game-card__face game-card__face--back"></span>
+                    <span class="game-card__face game-card__face--front"></span>
+                </span>
+            </button>
+        </div>
     </main>
+
+    <dialog class="game-dialog" id="exit-dialog" aria-labelledby="exit-dialog-title">
+        <h2 class="game-dialog__title" id="exit-dialog-title">Are you sure you want to quit the game?</h2>
+        <div class="game-dialog__actions">
+            <button type="button" class="game-dialog__btn game-dialog__btn--confirm" id="exit-confirm">Yes, quit</button>
+            <button type="button" class="game-dialog__btn" id="exit-cancel">No, continue</button>
+        </div>
+    </dialog>
     
     <script type="module" src="./src/main.ts"></script>
 </body>
