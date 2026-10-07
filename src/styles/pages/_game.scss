@@ -3,7 +3,7 @@
 @use "../abstract/functions" as fn;
 
 .game {
-  padding: 50px;
+  padding: 10px 110px;
 
   .game-header {
     @include mix.flex-center(row, space-between, center);
@@ -82,7 +82,7 @@
     display: grid;
     grid-template-columns: repeat(var(--columns), minmax(0, var(--card-width)));
     justify-content: center;
-    gap: fn.px-to-rem(16px);
+    gap: fn.px-to-rem(10px);
     width: 100%;
 
     // 24 cards

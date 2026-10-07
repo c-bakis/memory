@@ -3,7 +3,7 @@
 @use "../abstract/functions" as fn;
 
 [data-theme="gaming"].game {
-  --card-width: 6.25rem;
+  --card-width: 6.2rem;
   background-color: abs.$dark-blue;
   color: abs.$white;
 
@@ -92,7 +92,7 @@
   }
 
   .game-card {
-    aspect-ratio: 17 / 22;
+    aspect-ratio: 17 / 20;
 
     &__face {
       border-radius: fn.px-to-rem(12px);
