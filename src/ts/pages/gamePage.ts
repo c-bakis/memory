@@ -1,4 +1,4 @@
-import type { GameSettings, Theme } from "../types/settings";
+import type { GameSettings, Player, Theme } from "../types/settings";
 
 function addPoints(): void {
   console.log("Points added!");
@@ -6,6 +6,7 @@ function addPoints(): void {
 
 export function initGamePage(): void {
   const settings = getGameSettings();
+  currentPlayer = settings.player;
   createCards(settings.boardSize, settings.theme);
   console.log(settings);
   setupExitDialog();
@@ -36,6 +37,12 @@ function returnToHomePage(): void {
 let cards: number[] = [];
 let activeCard: HTMLButtonElement | null = null;
 let isResolvingMismatch: boolean = false;
+let currentPlayer: Player;
+
+const scores: Record<Player, number> = {
+  orange: 0,
+  blue: 0,
+};
 const board = document.querySelector<HTMLDivElement>(".game-board");
 
 const cardTemplate = (id: number, theme: Theme) => {
@@ -148,8 +155,10 @@ function resolveCards(
   secondCard: HTMLButtonElement,
 ): void {
   if (compareCards(firstCard, secondCard)) {
-    addPoints();
     dismissCards(firstCard, secondCard);
+    window.setTimeout(() => {
+    addPointsToScore(currentPlayer, 1);
+    }, 400);
     return;
   }
 
@@ -166,6 +175,8 @@ function hideMismatchedCards(
     firstCard.classList.remove("is-flipped");
     secondCard.classList.remove("is-flipped");
     isResolvingMismatch = false;
+    switchPlayer();
+console.log(currentPlayer);
   }, 1000);
 }
 
@@ -182,4 +193,21 @@ function dismissCards(
 ): void {
   card1.disabled = true;
   card2.disabled = true;
+}
+
+function addPointsToScore(player: Player, points: number): void {
+  scores[player] += points;
+  updateScoreDisplay(player);
+}
+
+function updateScoreDisplay(player: Player): void {
+  const scoreElement = document.getElementById(`${player}-score`);
+  if (scoreElement) {
+    scoreElement.textContent = scores[player].toString();
+  }
+}
+
+function switchPlayer(): void {
+  currentPlayer = currentPlayer === "orange" ? "blue" : "orange";
+  document.body.dataset.player = currentPlayer;
 }

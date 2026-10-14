@@ -17,6 +17,13 @@
         padding: fn.px-to-rem(12px);
       }
 
+      & output {
+        display: inline-block;
+        width: 3ch;
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+      }
+
       & dt {
         @include mix.flex-center(row, center, center);
         gap: fn.px-to-rem(8px);
