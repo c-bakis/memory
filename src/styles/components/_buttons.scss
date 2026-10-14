@@ -1,4 +1,6 @@
 @use "../abstract/variables" as abs;
+@use "../abstract/mixin" as mix;
+@use "../abstract/functions" as fn;
 
 .btn {
   transition: all 0.3s ease-in-out;
@@ -21,10 +23,19 @@
         content: url("../assets/img/Arrow 1 (1).svg");
       }
     }
+
     &--settings {
       padding: 14px 20px;
       font-size: 20px;
       border: none;
     }
   }
+}
+
+.game-action-button {
+  @include mix.flex-center(row, center, center);
+  gap: fn.px-to-rem(12px);
+  padding: fn.px-to-rem(8px) fn.px-to-rem(20px);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }

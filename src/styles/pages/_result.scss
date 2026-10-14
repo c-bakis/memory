@@ -1,0 +1,117 @@
+@use "../abstract/variables" as abs;
+@use "../abstract/functions" as fn;
+
+body.result {
+  min-height: 100vh;
+  background-color: abs.$dark;
+  color: abs.$white;
+}
+
+[data-theme="code-vibes"].result {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: fn.px-to-rem(24px);
+  background-color: abs.$dark;
+  color: abs.$white;
+
+  .result__main {
+    width: min(100%, fn.px-to-rem(880px));
+    z-index: 1;
+  }
+
+  .result__confetti {
+    position: absolute;
+    inset: 0 0 auto;
+    width: 100%;
+    height: fn.px-to-rem(170px);
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .result__card {
+    display: grid;
+    justify-items: center;
+    gap: fn.px-to-rem(30px);
+    width: 100%;
+    background-color: rgba(abs.$dark, 0.94);
+    text-align: center;
+  }
+
+  .result__title {
+
+    &--player {
+      font-size: clamp(fn.px-to-rem(24px), 7vw, fn.px-to-rem(42px));
+    }
+    
+    &-gameover {
+      margin-top: -20px;
+      color: abs.$mint;
+      font-size: clamp(fn.px-to-rem(42px), 12vw, fn.px-to-rem(132px));
+      text-shadow: -1px 0px 0px abs.$white, -1px 0px 3px abs.$mint;
+      font-weight: bold;
+    }
+    &--uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  .result__subtitle {
+      font-size: clamp(fn.px-to-rem(18px), 9vw, fn.px-to-rem(28px));
+      font-weight: 400;
+  }
+
+  .result__outcome {
+    display: grid;
+    justify-items: center;
+    min-height: fn.px-to-rem(210px);
+    align-content: center;
+  }
+
+  .result__outcome--orange {
+    color: abs.$code-orange;
+  }
+
+  .result__outcome--blue {
+    color: abs.$code-blue;
+  }
+
+.result__medal {
+  display: block;
+  width: fn.px-to-rem(100px);
+  height: fn.px-to-rem(100px);
+  background-color: currentColor;
+  mask: url("/assets/img/chess_pawn.svg") center / contain no-repeat;
+  -webkit-mask: url("/assets/img/chess_pawn.svg") center / contain no-repeat;
+
+  &--orange {
+    color: abs.$code-orange;
+  }
+
+  &--blue {
+    color: abs.$code-blue;
+  }
+}
+
+
+  .result__draw-icon {
+    width: fn.px-to-rem(200px);
+    height: fn.px-to-rem(180px);
+    object-fit: contain;
+  }
+
+  .result__back:hover,
+  .result__back:focus-visible {
+    outline: 2px solid abs.$mint;
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-theme="code-vibes"].result .result__card {
+    padding: fn.px-to-rem(24px) fn.px-to-rem(16px);
+  }
+
+}

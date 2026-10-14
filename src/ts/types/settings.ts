@@ -7,3 +7,9 @@ export interface GameSettings {
 	player: Player;
 	boardSize: BoardSize;
 }
+
+export interface GameResult {
+	theme: Theme;
+	startingPlayer: Player;
+	scores: Record<Player, number>;
+}

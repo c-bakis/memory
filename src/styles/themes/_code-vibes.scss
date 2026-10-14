@@ -10,28 +10,6 @@
   .game-header {
     background-color: abs.$mint-header;
 
-    &__counter {
-      background-color: rgba(abs.$mint-button, 0.14);
-
-      & dl {
-        gap: fn.px-to-rem(8px);
-      }
-
-      & dt::before {
-        width: fn.px-to-rem(20px);
-        height: fn.px-to-rem(16px);
-        @include mix.icon-mask("/assets/img/player-arrow.svg");
-      }
-
-      &--blue {
-        color: abs.$code-blue;
-      }
-
-      &--orange {
-        color: abs.$code-orange;
-      }
-    }
-
     &__current-player {
       gap: fn.px-to-rem(12px);
 
@@ -45,18 +23,6 @@
       height: fn.px-to-rem(16px);
       background-color: abs.$code-orange;
       @include mix.icon-mask("/assets/img/player-arrow.svg");
-    }
-
-    &__exit {
-      background-color: rgba(abs.$mint-button, 0.14);
-      border: 1px solid abs.$mint;
-      color: abs.$white;
-      font-size: fn.px-to-rem(20px);
-
-      &:hover {
-        background-color: rgba(abs.$mint-button, 0.26);
-        box-shadow: inset 0 0 0 1px abs.$mint;
-      }
     }
 
     &__exit-icon {
@@ -109,5 +75,40 @@
 
   &[data-player="blue"] .game-header__current-player-icon {
     background-color: abs.$code-blue;
+  }
+}
+
+[data-theme="code-vibes"] .game-action-button {
+  background-color: rgba(abs.$mint-button, 0.14);
+  border: 1px solid abs.$mint;
+  color: abs.$white;
+  font-size: fn.px-to-rem(20px);
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(abs.$mint-button, 0.26);
+    box-shadow: inset 0 0 0 1px abs.$mint;
+  }
+}
+
+[data-theme="code-vibes"] .scoreboard {
+  background-color: rgba(abs.$mint-button, 0.14);
+
+  &__player dl {
+    gap: fn.px-to-rem(8px);
+  }
+
+  &__player dt::before {
+    width: fn.px-to-rem(20px);
+    height: fn.px-to-rem(16px);
+    @include mix.icon-mask("/assets/img/player-arrow.svg");
+  }
+
+  &__player--blue {
+    color: abs.$code-blue;
+  }
+
+  &__player--orange {
+    color: abs.$code-orange;
   }
 }

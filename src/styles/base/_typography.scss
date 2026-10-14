@@ -55,6 +55,20 @@ p, span, li, option, textarea, label, input, output {
     font-family: 'red-rose', sans-serif;
   }
 }
+[data-theme="code-vibes"].result {
+  h1,
+  h2,
+  a,
+  strong {
+    font-family: 'red-rose', sans-serif;
+  }
+
+  p,
+  dt,
+  dd {
+    font-family: 'Almarai', sans-serif;
+  }
+}
 [data-theme="gaming"].game {
   dl,
   dt,

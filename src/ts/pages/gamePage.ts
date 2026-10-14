@@ -1,12 +1,11 @@
-import type { GameSettings, Player, Theme } from "../types/settings";
+import type { GameResult, GameSettings, Player, Theme } from "../types/settings";
 
-function addPoints(): void {
-  console.log("Points added!");
-}
+let totalPairs = 0;
 
 export function initGamePage(): void {
   const settings = getGameSettings();
   currentPlayer = settings.player;
+  totalPairs = settings.boardSize / 2;
   createCards(settings.boardSize, settings.theme);
   console.log(settings);
   setupExitDialog();
@@ -198,6 +197,18 @@ function dismissCards(
 function addPointsToScore(player: Player, points: number): void {
   scores[player] += points;
   updateScoreDisplay(player);
+  if (scores.orange + scores.blue === totalPairs) finishGame();
+}
+
+function finishGame(): void {
+  const settings = getGameSettings();
+  const result: GameResult = {
+    theme: settings.theme,
+    startingPlayer: settings.player,
+    scores,
+  };
+  sessionStorage.setItem("game-result", JSON.stringify(result));
+  window.location.href = "result.html";
 }
 
 function updateScoreDisplay(player: Player): void {

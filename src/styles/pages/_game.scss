@@ -9,32 +9,6 @@
     @include mix.flex-center(row, space-between, center);
     padding: fn.px-to-rem(16px) fn.px-to-rem(30px);
 
-    &__counter {
-      @include mix.flex-center(row, space-between, center);
-
-      & dl {
-        @include mix.flex-center(row, space-between, center);
-        padding: fn.px-to-rem(12px);
-      }
-
-      & output {
-        display: inline-block;
-        width: 3ch;
-        font-variant-numeric: tabular-nums;
-        text-align: right;
-      }
-
-      & dt {
-        @include mix.flex-center(row, center, center);
-        gap: fn.px-to-rem(8px);
-
-        &::before {
-          content: "";
-          background-color: currentColor;
-        }
-      }
-    }
-
     &__current-player {
       @include mix.flex-center(row, center, center);
 
@@ -43,13 +17,6 @@
       }
     }
 
-    &__exit {
-      @include mix.flex-center(row, center, center);
-      gap: fn.px-to-rem(12px);
-      padding: fn.px-to-rem(8px) fn.px-to-rem(20px);
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-    }
   }
 
   .game-dialog {

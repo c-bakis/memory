@@ -2,7 +2,7 @@
 import "./styles/style.scss";
 import { initSettingsPage } from "./ts/pages/settingsPage";
 import { initGamePage } from "./ts/pages/gamePage";
-// import { initResultPage } from "./pages/resultPage";
+import { initResultPage } from "./ts/pages/resultPage";
 
 const page = document.body.dataset.page;
 
@@ -14,9 +14,9 @@ if (page === "game") {
   initGamePage();
 }
 
-// if (page === "result") {
-//   initResultPage();
-// }
+if (page === "result") {
+  initResultPage();
+}
 
 const settings = JSON.parse(
   sessionStorage.getItem("game-settings") ?? "{}",

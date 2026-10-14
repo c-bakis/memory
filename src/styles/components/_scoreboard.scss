@@ -1,0 +1,28 @@
+@use "../abstract/mixin" as mix;
+@use "../abstract/functions" as fn;
+
+.scoreboard {
+  @include mix.flex-center(row, space-between, center);
+
+  &__player dl {
+    @include mix.flex-center(row, space-between, center);
+    padding: fn.px-to-rem(12px);
+  }
+
+  &__player dt {
+    @include mix.flex-center(row, center, center);
+    gap: fn.px-to-rem(8px);
+
+    &::before {
+      content: "";
+      background-color: currentColor;
+    }
+  }
+
+  output {
+    display: inline-block;
+    width: 3ch;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+}
