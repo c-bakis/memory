@@ -28,7 +28,7 @@ body.result {
 .result__card {
   display: grid;
   justify-items: center;
-  gap: fn.px-to-rem(30px);
+  gap: clamp(fn.px-to-rem(16px), 2.08vw, fn.px-to-rem(30px));
   width: 100%;
   text-align: center;
 }
@@ -57,7 +57,7 @@ body.result {
 .result__outcome {
   display: grid;
   justify-items: center;
-  min-height: fn.px-to-rem(210px);
+  min-height: clamp(fn.px-to-rem(160px), 14.58vw, fn.px-to-rem(210px));
   align-content: center;
 }
 

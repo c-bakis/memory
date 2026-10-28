@@ -3,11 +3,12 @@
 @use "../abstract/functions" as fn;
 
 .game {
-  padding: 10px 110px;
+  padding: fn.px-to-rem(10px) clamp(fn.px-to-rem(12px), 7.64vw, fn.px-to-rem(110px));
 
   .game-header {
     @include mix.flex-center(row, space-between, center);
-    padding: fn.px-to-rem(16px) fn.px-to-rem(30px);
+    gap: clamp(fn.px-to-rem(12px), 2vw, fn.px-to-rem(30px));
+    padding: fn.px-to-rem(16px) clamp(fn.px-to-rem(12px), 2.08vw, fn.px-to-rem(30px));
 
     &__current-player {
       @include mix.flex-center(row, center, center);
@@ -21,7 +22,8 @@
 
   .game-dialog {
     margin: auto;
-    padding: fn.px-to-rem(32px);
+    width: min(100%, fn.px-to-rem(520px));
+    padding: clamp(fn.px-to-rem(16px), 2.22vw, fn.px-to-rem(32px));
     text-align: center;
 
     &::backdrop {
@@ -29,7 +31,7 @@
     }
 
     &__title {
-      font-size: fn.px-to-rem(20px);
+      font-size: clamp(fn.px-to-rem(16px), 1.4vw, fn.px-to-rem(20px));
     }
 
     &__actions {
@@ -48,7 +50,7 @@
 
   .game-main {
     @include mix.flex-center(row, center, center);
-    padding: fn.px-to-rem(40px) 0;
+    padding: clamp(fn.px-to-rem(20px), 2.78vw, fn.px-to-rem(40px)) 0;
   }
 
   .game-board {
@@ -56,7 +58,7 @@
     display: grid;
     grid-template-columns: repeat(var(--columns), minmax(0, var(--card-width)));
     justify-content: center;
-    gap: fn.px-to-rem(10px);
+    gap: clamp(fn.px-to-rem(4px), 0.7vw, fn.px-to-rem(10px));
     width: 100%;
 
     // 24 cards

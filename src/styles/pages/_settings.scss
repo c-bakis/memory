@@ -4,11 +4,14 @@
 
 .settings {
   margin: 0 auto;
-  padding: 100px 150px;
+  padding: clamp(fn.px-to-rem(32px), 6.95vw, fn.px-to-rem(100px))
+    clamp(fn.px-to-rem(24px), 10.42vw, fn.px-to-rem(150px));
+
   &__text--headline {
     position: relative;
     border-bottom: 3px solid abs.$yellow;
-    width: 180px;
+    width: fit-content;
+    max-width: 100%;
 
     &::before {
       content: "";
@@ -29,11 +32,13 @@
   }
   &__content {
     @include mix.flex-center(row, space-between, flex-start);
-    margin-top: 50px;
+    gap: clamp(fn.px-to-rem(24px), 4vw, fn.px-to-rem(64px));
+    margin-top: clamp(fn.px-to-rem(32px), 3.47vw, fn.px-to-rem(50px));
   }
   &__options {
     @include mix.flex-center(column, flex-start, flex-start);
     width: 40%;
+    min-width: 0;
     padding: 20px;
     gap: 54px;
     text-align: left;
@@ -109,8 +114,9 @@
   }
   &__preview {
     @include mix.flex-center(column, center, flex-end);
-    gap: 42px;
+    gap: clamp(fn.px-to-rem(24px), 2.92vw, fn.px-to-rem(42px));
     width: 50%;
+    min-width: 0;
 
     @media (max-width: 1347px) {
       width: 65%;
@@ -125,9 +131,10 @@
       grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
       align-items: center;
       background-color: abs.$secondary-white;
-      padding: 14px 20px;
       width: 100%;
-      gap: 20px;
+      gap: clamp(fn.px-to-rem(8px), 1.39vw, fn.px-to-rem(20px));
+      padding: fn.px-to-rem(14px)
+        clamp(fn.px-to-rem(8px), 1.39vw, fn.px-to-rem(20px));
 
       &-icon-display {
         height: 16px;
@@ -140,7 +147,8 @@
   &__selected {
     position: relative;
     width: 100%;
-    font-size: fn.px-to-rem(20px);
+    min-width: 0;
+    font-size: clamp(fn.px-to-rem(14px), 1.39vw, fn.px-to-rem(20px));
     text-align: center;
 
     & + &::before {

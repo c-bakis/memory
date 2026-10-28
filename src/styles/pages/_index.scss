@@ -5,27 +5,29 @@
 .home {
     @include mix.flex-center;
     background-color: abs.$dark;
+    padding: fn.px-to-rem(24px);
 
     &__text {
         color: abs.$white;
-        margin-bottom: 50px;
+        margin-bottom: clamp(fn.px-to-rem(24px), 3.5vw, fn.px-to-rem(50px));
+        max-width: 100%;
 
         &--headline {
             font-weight: 700;
-            font-size: fn.px-to-rem(140px);
+            font-size: clamp(fn.px-to-rem(48px), 9.72vw, fn.px-to-rem(140px));
         }
 
         &--caption {
             font-weight: 400;
-            font-size: fn.px-to-rem(48px);
+            font-size: clamp(fn.px-to-rem(24px), 3.33vw, fn.px-to-rem(48px));
         }
     }
     &__controller {
         position: absolute;
         bottom: 10px;
         left: -20px;
-        width: 400px;
-        height: 400px;
+        width: clamp(fn.px-to-rem(180px), 27.78vw, fn.px-to-rem(400px));
+        height: auto;
     }
 }
 
