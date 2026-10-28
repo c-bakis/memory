@@ -6,6 +6,12 @@ import { initResultPage } from "./ts/pages/resultPage";
 
 const page = document.body.dataset.page;
 
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+  });
+}
+
 if (page === "settings") {
   initSettingsPage();
 }
