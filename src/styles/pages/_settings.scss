@@ -121,11 +121,13 @@
       gap: 0;
     }
     &-buttons {
-      @include mix.flex-center(row, center, center);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+      align-items: center;
       background-color: abs.$secondary-white;
       padding: 14px 20px;
       width: 100%;
-      gap: 40px;
+      gap: 20px;
 
       &-icon-display {
         height: 16px;
@@ -137,12 +139,14 @@
   }
   &__selected {
     position: relative;
+    width: 100%;
     font-size: fn.px-to-rem(20px);
+    text-align: center;
 
     & + &::before {
       content: "";
       position: absolute;
-      left: -20px;
+      left: -10px;
       top: 50%;
       width: 8px;
       height: 48px;

@@ -112,3 +112,61 @@
     color: abs.$code-orange;
   }
 }
+
+[data-theme="code-vibes"].result {
+  --result-orange: #{abs.$code-orange};
+  --result-blue: #{abs.$code-blue};
+  --result-medal-image: url("/assets/img/chess_pawn.svg");
+  --result-draw-color: #{abs.$mint};
+  --result-draw-image: url("/assets/img/code-theme/Neuer%20Ordner/Scale_Icon.png");
+  background-color: abs.$dark;
+  color: abs.$white;
+
+  .result__card {
+    background-color: rgba(abs.$dark, 0.94);
+  }
+
+  .result__title-gameover {
+    color: abs.$mint;
+    text-shadow: -1px 0 0 abs.$white, -1px 0 3px abs.$mint;
+  }
+
+  .result__outcome--orange {
+    color: abs.$code-orange;
+    text-transform: uppercase;
+  }
+
+  .result__outcome--blue {
+    color: abs.$code-blue;
+    text-transform: uppercase;
+  }
+
+  .result__back:hover,
+  .result__back:focus-visible {
+    outline: 2px solid abs.$mint;
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  a,
+  strong {
+    font-family: "red-rose", sans-serif;
+  }
+
+  p,
+  dt,
+  dd {
+    font-family: "Almarai", sans-serif;
+  }
+}
+
+[data-theme="code-vibes"] .result__confetti {
+  background-image: url("/assets/img/code-theme/Neuer%20Ordner/Confetti%20(1).png");
+}
+
+@media (max-width: 1440px) {
+  [data-theme="code-vibes"] .result__confetti {
+    background-image: url("/assets/img/code-theme/Neuer%20Ordner/Confetti.png");
+  }
+}

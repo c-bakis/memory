@@ -97,7 +97,7 @@ function orangeWinnerTemplate(result: GameResult): string {
     <section class="result__card result__card--orange" aria-labelledby="result-title">
       <div class="result__outcome">
         <h2 class="result__subtitle">The winner is</h2>
-        <h1 class="result__title result__outcome--orange result__title--player result__title--uppercase">Orange player</h1>
+        <h1 class="result__title result__outcome--orange result__title--player">Orange Player</h1>
         <span
           class="result__medal result__medal--orange"
           aria-hidden="true"
@@ -114,7 +114,7 @@ function blueWinnerTemplate(result: GameResult): string {
     <section class="result__card result__card--blue" aria-labelledby="result-title">
       <div class="result__outcome">
         <h2 class="result__subtitle">The winner is</h2>
-        <h1 class="result__title result__outcome--blue result__title--player result__title--uppercase">Blue player</h1>
+        <h1 class="result__title result__outcome--blue result__title--player">Blue Player</h1>
         <span
           class="result__medal result__medal--blue"
           aria-hidden="true"
@@ -131,7 +131,9 @@ function drawResultTemplate(): string {
       <div class="result__outcome">
         <h2 class="result__subtitle">It's a</h2>
         <h1 class="result__title result__title-gameover result__title--uppercase">draw</h1>
-        <img class="result__draw-icon" src="/assets/img/code-theme/Neuer%20Ordner/Scale_Icon.png" alt="" />
+        <span class="result__draw-icon" aria-hidden="true">
+          <span class="result__draw-icon-shape"></span>
+        </span>
       </div>
       <a class="game-action-button result__back" href="settings.html">Back to start</a>
     </section>
@@ -140,17 +142,7 @@ function drawResultTemplate(): string {
 
 function winnerConfettiTemplate(): string {
   return `
-<picture>
-  <source
-    media="(max-width: 1440px)"
-    srcset="/assets/img/code-theme/Neuer%20Ordner/Confetti.png"
-  />
-  <img
-    class="result__confetti"
-    src="/assets/img/code-theme/Neuer%20Ordner/Confetti%20(1).png"
-    alt=""
-  />
-</picture>
+<div class="result__confetti" aria-hidden="true"></div>
   `;
 }
 

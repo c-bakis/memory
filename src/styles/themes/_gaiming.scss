@@ -138,3 +138,56 @@
     color: abs.$orange;
   }
 }
+
+[data-theme="gaming"].result {
+  --result-orange: #{abs.$orange};
+  --result-blue: #{abs.$blue};
+  --result-medal-image: url("/assets/img/game-theme/pockal.png");
+  --result-draw-color: #{abs.$pink};
+  --result-draw-shadow: 0 1px 2px #{abs.$black};
+  --result-draw-image: url("/assets/img/Scale_Icon.png");
+  background-color: abs.$dark-blue;
+  color: abs.$white;
+
+  .result__confetti {
+    display: none;
+  }
+
+  .result__medal {
+    width: clamp(fn.px-to-rem(144px), 44vw, fn.px-to-rem(220px));
+    height: clamp(fn.px-to-rem(160px), 50vw, fn.px-to-rem(220px));
+    background: var(--result-medal-image) center / contain no-repeat;
+    mask: none;
+    -webkit-mask: none;
+  }
+
+  .result__title-gameover {
+    color: abs.$pink;
+    text-shadow: 2px 2px 2px abs.$black;
+    text-transform: uppercase;
+  }
+
+  .result__outcome--orange {
+    color: var(--result-orange);
+    text-shadow: 2px 2px 2px abs.$black;
+    font-size: fn.px-to-rem(64px);
+  }
+
+  .result__outcome--blue {
+    color: var(--result-blue);
+    text-shadow: 2px 2px 2px abs.$black;
+    font-size: fn.px-to-rem(64px);
+  }
+
+  h1,
+  h2,
+  a,
+  dl,
+  dt,
+  dd,
+  output {
+    font-family: "orbitron", sans-serif;
+    font-weight: bold;
+    width: auto;
+  }
+}
