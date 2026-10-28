@@ -40,7 +40,7 @@ body.result {
 
   &-gameover {
     margin-top: -20px;
-    font-size: clamp(fn.px-to-rem(42px), 12vw, fn.px-to-rem(132px));
+    font-size: clamp(fn.px-to-rem(42px), 9vw, fn.px-to-rem(96px));
     font-weight: bold;
   }
 
