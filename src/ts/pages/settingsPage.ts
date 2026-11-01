@@ -5,10 +5,37 @@ export function initSettingsPage(): void {
   const inputs = document.querySelectorAll<HTMLInputElement>(
     'input[type="radio"]',
   );
+  const committedSelections = new Map<string, string>();
 
   inputs.forEach((input) => {
-    input.addEventListener("change", updateSettingsPreview);
+    if (input.checked) committedSelections.set(input.name, input.value);
   });
+
+  inputs.forEach((input) => {
+    const label = input.closest("label");
+    label?.addEventListener("pointerenter", () => {
+      input.checked = true;
+      updateSettingsPreview();
+    });
+    label?.addEventListener("pointerleave", restoreCommittedSelections);
+
+    const commitSelection = () => {
+      if (input.checked) {
+        committedSelections.set(input.name, input.value);
+        updateSettingsPreview();
+      }
+    };
+
+    input.addEventListener("change", commitSelection);
+    input.addEventListener("click", commitSelection);
+  });
+
+  function restoreCommittedSelections(): void {
+    inputs.forEach((input) => {
+      input.checked = committedSelections.get(input.name) === input.value;
+    });
+    updateSettingsPreview();
+  }
 
   updateSettingsPreview();
 
