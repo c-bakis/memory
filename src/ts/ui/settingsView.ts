@@ -27,7 +27,7 @@ export function updateSettingsPreview(): void {
       ? theme.value === "code-vibes"
         ? "Code vibes"
         : "Gaming"
-      : "Choose a theme";
+      : "Game theme";
   }
 
   if (selectedPlayer) {
@@ -35,13 +35,13 @@ export function updateSettingsPreview(): void {
       ? player.value === "orange"
         ? "Orange"
         : "Blue"
-      : "Choose a player";
+      : "Player";
   }
 
   if (selectedBoardSize) {
     selectedBoardSize.textContent = boardSize
       ? `${boardSize.value} Cards`
-      : "Choose a board size";
+      : "Board Size";
   }
 
   if (previewImage) {
