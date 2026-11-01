@@ -8,6 +8,9 @@
 
   .game-header {
     @include mix.flex-center(row, space-between, center);
+    width: 100%;
+    max-width: 1980px;
+    margin-inline: auto;
     gap: clamp(fn.px-to-rem(12px), 2vw, fn.px-to-rem(30px));
     padding: fn.px-to-rem(16px)
       clamp(fn.px-to-rem(12px), 2.08vw, fn.px-to-rem(30px));
@@ -51,6 +54,9 @@
 
   .game-main {
     @include mix.flex-center(row, center, center);
+    width: 100%;
+    max-width: 1980px;
+    margin-inline: auto;
     padding: clamp(fn.px-to-rem(20px), 2.78vw, fn.px-to-rem(40px)) 0;
   }
 
