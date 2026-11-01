@@ -138,6 +138,7 @@ function canFlipCard(card: HTMLButtonElement): boolean {
   return (
     !card.disabled &&
     !card.classList.contains("is-flipped") &&
+    !card.classList.contains("is-unflipping") &&
     !isResolvingMismatch
   );
 }
@@ -164,12 +165,44 @@ function hideMismatchedCards(
   isResolvingMismatch = true;
 
   window.setTimeout(() => {
-    firstCard.classList.remove("is-flipped");
-    secondCard.classList.remove("is-flipped");
+    flipCardsBack(firstCard, secondCard);
+  }, 1000);
+}
+
+function flipCardsBack(
+  firstCard: HTMLButtonElement,
+  secondCard: HTMLButtonElement,
+): void {
+  let cardsToFlipBack = 2;
+
+  for (const card of [firstCard, secondCard]) {
+    const inner = card.querySelector<HTMLElement>(".game-card__inner");
+    if (!inner) {
+      cardsToFlipBack--;
+      continue;
+    }
+
+    inner.addEventListener(
+      "transitionend",
+      (event) => {
+        if (event.target !== inner || event.propertyName !== "transform") return;
+        card.classList.remove("is-unflipping");
+        cardsToFlipBack--;
+        if (cardsToFlipBack === 0) {
+          isResolvingMismatch = false;
+          switchPlayer();
+        }
+      },
+      { once: true },
+    );
+    card.classList.add("is-unflipping");
+    card.classList.remove("is-flipped");
+  }
+
+  if (cardsToFlipBack === 0) {
     isResolvingMismatch = false;
     switchPlayer();
-console.log(currentPlayer);
-  }, 1000);
+  }
 }
 
 function compareCards(
