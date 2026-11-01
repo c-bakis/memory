@@ -15,12 +15,10 @@
       font-size: 40px;
 
       &:hover .controller {
-        width: 49.5px;
-        height: 36px;
-        transform: rotate(25.77deg);
+        transform: scale(1.2) rotate(25.77deg);
       }
-      &:hover .arrow {
-        content: url("/assets/img/Arrow 1 (1).svg");
+      &:hover .arrow__image--hover {
+        opacity: 1;
       }
     }
 
