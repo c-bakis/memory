@@ -88,6 +88,8 @@
 			grid-template-columns: minmax(0, 1fr) auto;
 			gap: fn.px-to-rem(12px);
 			padding: fn.px-to-rem(12px);
+			margin-bottom: fn.px-to-rem(20px);
+			margin-top: fn.px-to-rem(8px);
 		}
 
 		.scoreboard {
