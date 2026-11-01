@@ -1,6 +1,11 @@
 
 import type { GameSettings, Theme, Player, BoardSize } from "../types/settings";
 
+/**
+ * Reads the selected theme, starting player, and board size from the settings form.
+ *
+ * @returns The currently selected game settings.
+ */
 export function getSelectedSettings(): GameSettings {
   const theme = document.querySelector<HTMLInputElement>(
     'input[name="theme"]:checked',

@@ -1,4 +1,8 @@
 
+/**
+ * Application entry point: loads global styles, initializes the active page,
+ * and registers the production service worker.
+ */
 import "./styles/style.scss";
 import { initSettingsPage } from "./ts/pages/settingsPage";
 import { initGamePage } from "./ts/pages/gamePage";

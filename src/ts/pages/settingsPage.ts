@@ -1,6 +1,9 @@
 import { getSelectedSettings } from "../state/settingsState";
 import { updateSettingsPreview } from "../ui/settingsView";
 
+/**
+ * Initializes settings selection, preview updates, and game launch behavior.
+ */
 export function initSettingsPage(): void {
   const inputs = document.querySelectorAll<HTMLInputElement>(
     'input[type="radio"]',
@@ -8,6 +11,9 @@ export function initSettingsPage(): void {
   const committedSelections = new Map<string, string>();
   const saveButton = document.querySelector<HTMLButtonElement>("#save-btn");
 
+  /**
+   * Enables the save button once all required settings are selected.
+   */
   function updateSaveButton(): void {
     saveButton?.toggleAttribute(
       "disabled",
@@ -41,6 +47,9 @@ export function initSettingsPage(): void {
     input.addEventListener("click", commitSelection);
   });
 
+  /**
+   * Restores the last committed settings after leaving a previewed option.
+   */
   function restoreCommittedSelections(): void {
     inputs.forEach((input) => {
       input.checked = committedSelections.get(input.name) === input.value;

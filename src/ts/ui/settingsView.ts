@@ -1,3 +1,6 @@
+/**
+ * Updates the selected-settings labels and theme preview from the form inputs.
+ */
 export function updateSettingsPreview(): void {
   const selectedTheme = document.querySelector<HTMLOutputElement>(
     "#selected-theme",

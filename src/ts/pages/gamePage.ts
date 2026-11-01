@@ -3,6 +3,9 @@ import { cardTemplate } from "../template";
 
 let totalPairs = 0;
 
+/**
+ * Initializes the game using the settings saved in session storage.
+ */
 export function initGamePage(): void {
   const settings = getGameSettings();
   currentPlayer = settings.player;
@@ -12,10 +15,18 @@ export function initGamePage(): void {
   setupExitDialog();
 }
 
+/**
+ * Retrieves the current game settings from session storage.
+ *
+ * @returns The settings saved for the current game.
+ */
 function getGameSettings(): GameSettings {
   return JSON.parse(sessionStorage.getItem("game-settings") ?? "{}");
 }
 
+/**
+ * Connects the exit dialog buttons to their actions.
+ */
 function setupExitDialog(): void {
   const dialog = document.querySelector<HTMLDialogElement>("#exit-dialog");
   const exitButton =
@@ -30,6 +41,9 @@ function setupExitDialog(): void {
   confirmButton?.addEventListener("click", returnToHomePage);
 }
 
+/**
+ * Navigates back to the settings page.
+ */
 function returnToHomePage(): void {
   window.location.href = "settings.html";
 }
@@ -92,6 +106,12 @@ const cardImages: Record<Theme, Record<number, string>> = {
   },
 };
 
+/**
+ * Creates and shuffles the cards for the selected board and theme.
+ *
+ * @param boardSize - Number of cards to create.
+ * @param theme - Theme used to select each card image.
+ */
 function createCards(boardSize: number, theme: Theme): void {
   if (!board) return;
   board.innerHTML = "";
@@ -106,6 +126,9 @@ function createCards(boardSize: number, theme: Theme): void {
     .join("");
 }
 
+/**
+ * Randomizes the order of the cards.
+ */
 function shuffleCards(): void {
   for (let i = cards.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -115,6 +138,11 @@ function shuffleCards(): void {
 
 board?.addEventListener("click", handleCardClick);
 
+/**
+ * Handles a board click and resolves a pair when two cards are selected.
+ *
+ * @param event - Click event dispatched from the game board.
+ */
 function handleCardClick(event: MouseEvent): void {
   const card = getClickedCard(event);
   if (!card || !canFlipCard(card)) return;
@@ -128,12 +156,24 @@ function handleCardClick(event: MouseEvent): void {
   resolveCards(firstCard, card);
 }
 
+/**
+ * Finds the game card containing the click target.
+ *
+ * @param event - Click event to inspect.
+ * @returns The clicked card, or null if the click was outside a card.
+ */
 function getClickedCard(event: MouseEvent): HTMLButtonElement | null {
   const target = event.target;
   if (!(target instanceof Element)) return null;
   return target.closest<HTMLButtonElement>(".game-card");
 }
 
+/**
+ * Checks whether a card can currently be flipped.
+ *
+ * @param card - Card to check.
+ * @returns True if the card can be flipped.
+ */
 function canFlipCard(card: HTMLButtonElement): boolean {
   return (
     !card.disabled &&
@@ -143,6 +183,12 @@ function canFlipCard(card: HTMLButtonElement): boolean {
   );
 }
 
+/**
+ * Compares a pair and either awards a point or starts the mismatch flow.
+ *
+ * @param firstCard - First selected card.
+ * @param secondCard - Second selected card.
+ */
 function resolveCards(
   firstCard: HTMLButtonElement,
   secondCard: HTMLButtonElement,
@@ -158,6 +204,12 @@ function resolveCards(
   hideMismatchedCards(firstCard, secondCard);
 }
 
+/**
+ * Locks card selection while mismatched cards are shown before flipping back.
+ *
+ * @param firstCard - First mismatched card.
+ * @param secondCard - Second mismatched card.
+ */
 function hideMismatchedCards(
   firstCard: HTMLButtonElement,
   secondCard: HTMLButtonElement,
@@ -241,6 +293,12 @@ function compareCards(
   return card1.dataset.id === card2.dataset.id;
 }
 
+/**
+ * Disables a matched pair so it cannot be selected again.
+ *
+ * @param card1 - First matched card.
+ * @param card2 - Second matched card.
+ */
 function dismissCards(
   card1: HTMLButtonElement,
   card2: HTMLButtonElement,
@@ -249,12 +307,21 @@ function dismissCards(
   card2.disabled = true;
 }
 
+/**
+ * Adds points to a player's score and checks whether the game is complete.
+ *
+ * @param player - Player receiving the points.
+ * @param points - Number of points to add.
+ */
 function addPointsToScore(player: Player, points: number): void {
   scores[player] += points;
   updateScoreDisplay(player);
   if (scores.orange + scores.blue === totalPairs) finishGame();
 }
 
+/**
+ * Saves the final game result and navigates to the result page.
+ */
 function finishGame(): void {
   const settings = getGameSettings();
   const result: GameResult = {
@@ -266,6 +333,11 @@ function finishGame(): void {
   window.location.href = "result.html";
 }
 
+/**
+ * Updates the displayed score for a player.
+ *
+ * @param player - Player whose score display should be updated.
+ */
 function updateScoreDisplay(player: Player): void {
   const scoreElement = document.getElementById(`${player}-score`);
   if (scoreElement) {
@@ -273,6 +345,9 @@ function updateScoreDisplay(player: Player): void {
   }
 }
 
+/**
+ * Changes the active player and updates the document state.
+ */
 function switchPlayer(): void {
   currentPlayer = currentPlayer === "orange" ? "blue" : "orange";
   document.body.dataset.player = currentPlayer;
