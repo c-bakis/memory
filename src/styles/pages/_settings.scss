@@ -7,6 +7,12 @@
   padding: clamp(fn.px-to-rem(32px), 6.95vw, fn.px-to-rem(100px))
     clamp(fn.px-to-rem(24px), 10.42vw, fn.px-to-rem(150px));
 
+  &__container {
+    width: 100%;
+    max-width: 1980px;
+    margin-inline: auto;
+  }
+
   &__text--headline {
     position: relative;
     border-bottom: 3px solid abs.$yellow;
@@ -32,6 +38,7 @@
   }
   &__content {
     @include mix.flex-center(row, space-between, flex-start);
+    width: 100%;
     gap: clamp(fn.px-to-rem(24px), 4vw, fn.px-to-rem(64px));
     margin-top: clamp(fn.px-to-rem(32px), 3.47vw, fn.px-to-rem(50px));
   }
