@@ -23,6 +23,7 @@ body.result {
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
+  animation: result-fade-in 900ms ease-out both;
 }
 
 .result__card {
@@ -31,6 +32,10 @@ body.result {
   gap: clamp(fn.px-to-rem(16px), 2.08vw, fn.px-to-rem(30px));
   width: 100%;
   text-align: center;
+}
+
+.result__card--game-over {
+  animation: result-fade-in 800ms ease-out both;
 }
 
 .result__title {
@@ -59,6 +64,48 @@ body.result {
   justify-items: center;
   min-height: clamp(fn.px-to-rem(160px), 14.58vw, fn.px-to-rem(210px));
   align-content: center;
+
+  > * {
+    animation: result-reveal 400ms ease-out both;
+
+    &:nth-child(1) {
+      animation-delay: 10ms;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 200ms;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 300ms;
+    }
+  }
+}
+
+.result__back {
+  animation: result-reveal 400ms ease-out 500ms both;
+}
+
+@keyframes result-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(fn.px-to-rem(16px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes result-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .result__medal {
@@ -93,6 +140,15 @@ body.result {
   background-color: var(--result-draw-color);
   mask: var(--result-draw-image) center / contain no-repeat;
   -webkit-mask: var(--result-draw-image) center / contain no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result__confetti,
+  .result__card--game-over,
+  .result__outcome > *,
+  .result__back {
+    animation: none;
+  }
 }
 
 @media (max-width: 480px) {
