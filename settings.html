@@ -30,7 +30,6 @@
               id="code-vibes"
               name="theme"
               value="code-vibes"
-              checked
             />
             Code vibes theme
           </label>
@@ -55,7 +54,6 @@
               id="player-orange"
               name="player"
               value="orange"
-              checked
             />
             Orange
           </label>
@@ -80,7 +78,6 @@
               id="board-size-16"
               name="board-size"
               value="16"
-              checked
             />
             16 Cards
           </label>
@@ -109,7 +106,7 @@
         <div class="settings__preview-img">
           <img
             src="./assets/img/code-theme/theme.svg"
-            alt="theme preview"
+            alt="Theme preview"
             class="settings__preview-img--theme"
           />
         </div>
@@ -119,7 +116,7 @@
             class="settings__selected"
             aria-live="polite"
           >
-            Code vibes
+            Choose a theme
           </output>
           
           <output
@@ -127,16 +124,20 @@
             class="settings__selected"
             aria-live="polite"
           >
-            Orange
+            Choose a player
           </output>
           <output
             id="selected-board-size"
             class="settings__selected"
             aria-live="polite"
           >
-            16 Cards
+            Choose a board size
           </output>
-          <button id="save-btn" class="btn btn__yellow btn__yellow--settings">
+          <button
+            id="save-btn"
+            class="btn btn__yellow btn__yellow--settings"
+            disabled
+          >
             <img src="./assets/img/smart_display.svg" alt="start icon" class="btn__icon settings__preview-buttons-icon-display" />
             Start
           </button>

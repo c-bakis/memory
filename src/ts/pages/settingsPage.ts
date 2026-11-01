@@ -6,6 +6,16 @@ export function initSettingsPage(): void {
     'input[type="radio"]',
   );
   const committedSelections = new Map<string, string>();
+  const saveButton = document.querySelector<HTMLButtonElement>("#save-btn");
+
+  function updateSaveButton(): void {
+    saveButton?.toggleAttribute(
+      "disabled",
+      !["theme", "player", "board-size"].every((name) =>
+        committedSelections.has(name),
+      ),
+    );
+  }
 
   inputs.forEach((input) => {
     if (input.checked) committedSelections.set(input.name, input.value);
@@ -22,6 +32,7 @@ export function initSettingsPage(): void {
     const commitSelection = () => {
       if (input.checked) {
         committedSelections.set(input.name, input.value);
+        updateSaveButton();
         updateSettingsPreview();
       }
     };
@@ -37,9 +48,8 @@ export function initSettingsPage(): void {
     updateSettingsPreview();
   }
 
+  updateSaveButton();
   updateSettingsPreview();
-
-  const saveButton = document.querySelector<HTMLButtonElement>("#save-btn");
 
   saveButton?.addEventListener("click", () => {
     const settings = getSelectedSettings();

@@ -22,22 +22,41 @@ export function updateSettingsPreview(): void {
     ".settings__preview-img--theme",
   );
 
-  if (selectedTheme && theme) {
-    selectedTheme.textContent =
-      theme.value === "code-vibes" ? "Code vibes" : "Gaming";
+  if (selectedTheme) {
+    selectedTheme.textContent = theme
+      ? theme.value === "code-vibes"
+        ? "Code vibes"
+        : "Gaming"
+      : "Choose a theme";
   }
 
-  if (selectedPlayer && player) {
-    selectedPlayer.textContent =
-      player.value === "orange" ? "Orange" : "Blue";
+  if (selectedPlayer) {
+    selectedPlayer.textContent = player
+      ? player.value === "orange"
+        ? "Orange"
+        : "Blue"
+      : "Choose a player";
   }
 
-  if (selectedBoardSize && boardSize) {
-    selectedBoardSize.textContent = `${boardSize.value} Cards`;
+  if (selectedBoardSize) {
+    selectedBoardSize.textContent = boardSize
+      ? `${boardSize.value} Cards`
+      : "Choose a board size";
   }
 
-  if (previewImage && theme) {
-    previewImage.src = theme.value === "code-vibes" ? "./assets/img/code-theme/theme.svg" : "./assets/img/game-theme/theme.svg";
-    previewImage.alt = theme.value === "code-vibes" ? "Code vibes theme preview" : "Gaming theme preview";
+  if (previewImage) {
+    if (theme) {
+      previewImage.src =
+        theme.value === "code-vibes"
+          ? "./assets/img/code-theme/theme.svg"
+          : "./assets/img/game-theme/theme.svg";
+      previewImage.alt =
+        theme.value === "code-vibes"
+          ? "Code vibes theme preview"
+          : "Gaming theme preview";
+    } else {
+      previewImage.src = "./assets/img/code-theme/theme.svg";
+      previewImage.alt = "Theme preview";
+    }
   }
 }
