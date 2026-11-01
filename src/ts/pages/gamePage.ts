@@ -1,4 +1,5 @@
 import type { GameResult, GameSettings, Player, Theme } from "../types/settings";
+import { cardTemplate } from "../template";
 
 let totalPairs = 0;
 
@@ -44,16 +45,6 @@ const scores: Record<Player, number> = {
 };
 const board = document.querySelector<HTMLDivElement>(".game-board");
 
-const cardTemplate = (id: number, theme: Theme) => {
-  return `
-        <button data-id="card-${id}" class="game-card" aria-label="Card">
-                        <span class="game-card__inner">
-                    <span class="game-card__face game-card__face--back"></span>
-                    <span class="game-card__face game-card__face--front" style="background-image: url('${cardImages[theme][id]}')"></span>
-                </span>
-        </button>
-        `;
-};
 const pairIds: number[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
 ];
@@ -110,7 +101,9 @@ function createCards(boardSize: number, theme: Theme): void {
     }
   }
   shuffleCards();
-  board.innerHTML = cards.map((id) => cardTemplate(id, theme)).join("");
+  board.innerHTML = cards
+    .map((id) => cardTemplate(id, cardImages[theme][id]))
+    .join("");
 }
 
 function shuffleCards(): void {
