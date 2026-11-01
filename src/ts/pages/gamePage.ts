@@ -169,42 +169,71 @@ function hideMismatchedCards(
   }, 1000);
 }
 
+/**
+ * Flips both mismatched cards back and waits for their transitions to finish.
+ *
+ * @param firstCard - First card to flip back.
+ * @param secondCard - Second card to flip back.
+ */
 function flipCardsBack(
   firstCard: HTMLButtonElement,
   secondCard: HTMLButtonElement,
 ): void {
-  let cardsToFlipBack = 2;
+  let pendingTransitions = 0;
+  const onCardFlippedBack = (): void => {
+    pendingTransitions--;
+    if (pendingTransitions === 0) completeMismatchResolution();
+  };
 
   for (const card of [firstCard, secondCard]) {
-    const inner = card.querySelector<HTMLElement>(".game-card__inner");
-    if (!inner) {
-      cardsToFlipBack--;
-      continue;
-    }
-
-    inner.addEventListener(
-      "transitionend",
-      (event) => {
-        if (event.target !== inner || event.propertyName !== "transform") return;
-        card.classList.remove("is-unflipping");
-        cardsToFlipBack--;
-        if (cardsToFlipBack === 0) {
-          isResolvingMismatch = false;
-          switchPlayer();
-        }
-      },
-      { once: true },
-    );
-    card.classList.add("is-unflipping");
-    card.classList.remove("is-flipped");
+    if (flipCardBack(card, onCardFlippedBack)) pendingTransitions++;
   }
 
-  if (cardsToFlipBack === 0) {
-    isResolvingMismatch = false;
-    switchPlayer();
-  }
+  if (pendingTransitions === 0) completeMismatchResolution();
 }
 
+/**
+ * Flips one card back and registers a callback for its transition completion.
+ *
+ * @param card - Card to flip back.
+ * @param onFlippedBack - Callback invoked when the card's flip transition ends.
+ * @returns True if the card has an inner element and the flip was started.
+ */
+function flipCardBack(
+  card: HTMLButtonElement,
+  onFlippedBack: () => void,
+): boolean {
+  const inner = card.querySelector<HTMLElement>(".game-card__inner");
+  if (!inner) return false;
+
+  const handleTransitionEnd = (event: TransitionEvent): void => {
+    if (event.target !== inner || event.propertyName !== "transform") return;
+    inner.removeEventListener("transitionend", handleTransitionEnd);
+    card.classList.remove("is-unflipping");
+    onFlippedBack();
+  };
+
+  inner.addEventListener("transitionend", handleTransitionEnd);
+  card.classList.add("is-unflipping");
+  card.classList.remove("is-flipped");
+  return true;
+}
+
+/**
+ * Ends mismatch resolution and switches to the next player.
+ */
+function completeMismatchResolution(): void {
+  isResolvingMismatch = false;
+  switchPlayer();
+}
+
+/**
+ * Checks whether two cards represent the same pair.
+ *
+ * @param card1 - First card to compare.
+ * @param card2 - Second card to compare.
+ * @returns True if both cards have the same identifier.
+ */
 function compareCards(
   card1: HTMLButtonElement,
   card2: HTMLButtonElement,
